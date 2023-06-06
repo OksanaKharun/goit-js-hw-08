@@ -5,9 +5,6 @@ import { galleryItems } from './gallery-items.js';
 
 
 // Change code below this line
-
-console.log(galleryItems);
-
 const galleryItemsUl = document.querySelector(".gallery");
 
 function createGalleryMarkUp(items){
@@ -38,11 +35,7 @@ function onGalleryItemClick(event){
     if(event.target.nodeName !== "IMG"){
         return;
     }
-     const instance = basicLightbox.create(`<img src=
-      "${event.target.dataset.source}"
-       width="800" height ="600"/>`);
-      instance.show();
-
+     
 galleryItemsUl.addEventListener("keydown",(event) =>{
    if(event.code === "Escape"){
     document.removeEventListener("keydown",event);

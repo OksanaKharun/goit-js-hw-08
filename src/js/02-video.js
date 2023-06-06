@@ -3,24 +3,29 @@ import Player from '@vimeo/player';
 
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
-const kayStorage = "videoplayer-current-time";
 
-player.on('timeupdate',throttle(function(data){
-    localStorage.setItem(kayStorage, JSON.stringify(data.seconds));
-}), 1000)
+const onPlay = function ({ seconds }) {
+  localStorage.setItem('videoplayer-current-time', seconds);
+  console.log(seconds);
+};
 
-const getTime = localStorage.getItem(kayStorage); 
-  if(getTime){
-   player.setCurrentTime(JSON.parse(getTime));
-  }; 
+player.on('timeupdate', throttle(onPlay, 1000));
+let actualTime = localStorage.getItem('videoplayer-current-time');
+console.log(actualTime);
 
-player.setCurrentTime()
-.then(function(seconds) {})
-.catch(function(error) {
+player
+  .setCurrentTime(actualTime)
+  .then(function (seconds) {
+    
+  })
+  .catch(function (error) {
     switch (error.name) {
-        case 'RangeError':
-            break;
-            default:
-            break;
+      case 'RangeError':
+        break;
+      default:
+        break;
     }
-});
+  });
+
+
+

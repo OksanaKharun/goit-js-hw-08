@@ -11,13 +11,14 @@ formEl.addEventListener('input',throttle ((evt) =>{
 }), 500);
 
 function savedInputsValue(){
-    const getData = localStorage.getItem(kayStorage); 
+    const getData = localStorage.getItem(STORAGE_KEY); 
   if(getData){
     const { email, message } = JSON.parse(getData);
-    formEl.elements.email.value = email;
-    formEl.elements.message.value = message;
+    form.elements.email.value = email;
+    form.elements.message.value = message;
   }  
 }
+
 
 savedInputsValue();
 formEl.addEventListener('submit',onFormSubmit);
@@ -28,3 +29,4 @@ evt.currentTarget.reset();
 localStorage.removeItem(kayStorage);
 console.log(formInputs);
 }
+
