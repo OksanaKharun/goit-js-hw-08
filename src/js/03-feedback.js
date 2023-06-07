@@ -11,7 +11,7 @@ formEl.addEventListener('input',throttle ((evt) =>{
 }), 500);
 
 function savedInputsValue(){
-    const getData = localStorage.getItem(STORAGE_KEY); 
+    const getData = localStorage.getItem(kayStorage); 
   if(getData){
     const { email, message } = JSON.parse(getData);
     form.elements.email.value = email;
@@ -27,6 +27,6 @@ console.clear();
 evt.preventDefault();
 evt.currentTarget.reset();
 localStorage.removeItem(kayStorage);
-console.log(formInputs);
+console.log(localStorage);
 }
 
